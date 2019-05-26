@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.filmsapp.R;
 import com.example.filmsapp.domain.Film;
+import com.example.filmsapp.listener.ItemFilmClickListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -18,9 +19,11 @@ import java.util.List;
 public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.FilmViewHolder> {
 
     private List<Film> films;
+    private static ItemFilmClickListener listener;
 
-    public FilmAdapter() {
+    public FilmAdapter(ItemFilmClickListener listener) {
         this.films = new ArrayList<>();
+        FilmAdapter.listener = listener;
     }
 
     @NonNull
@@ -50,6 +53,7 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.FilmViewHolder
      */
     static class FilmViewHolder extends RecyclerView.ViewHolder {
 
+        private Film film;
         private TextView tv_title;
         private ImageView iv_path;
 
@@ -57,9 +61,15 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.FilmViewHolder
             super(itemView);
             tv_title = itemView.findViewById(R.id.tv_title);
             iv_path = itemView.findViewById(R.id.iv_path);
+            itemView.setOnClickListener(v -> {
+                if(listener != null){
+                    listener.onItemFilmClick(film);
+                }
+            });
         }
 
         void bind(Film film) {
+            this.film = film;
             tv_title.setText(film.getTitle());
             Picasso.get().load("https://image.tmdb.org/t/p/w342/" + film.getImagePath()).into(iv_path);
         }

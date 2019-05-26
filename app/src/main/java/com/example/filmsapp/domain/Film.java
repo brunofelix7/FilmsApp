@@ -1,6 +1,8 @@
 package com.example.filmsapp.domain;
 
-public class Film {
+import java.io.Serializable;
+
+public class Film implements Serializable {
 
     private String title;
     private String imagePath;
