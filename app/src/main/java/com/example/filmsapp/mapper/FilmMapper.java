@@ -13,12 +13,12 @@ import java.util.List;
  */
 public class FilmMapper {
 
-    public static List<Film> responseFromDomain(List<FilmResponse> filmResponses) {
+    public static List<Film> responseFromDomain(List<FilmResponse> filmsResponse) {
         final List<Film> films = new ArrayList<>();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            filmResponses.forEach(f -> films.add(new Film(f.getOriginal_title(), f.getPoster_path())));
+            filmsResponse.forEach(f -> films.add(new Film(f.getOriginal_title(), f.getPoster_path())));
         } else {
-            for (FilmResponse f : filmResponses) {
+            for (FilmResponse f : filmsResponse) {
                 films.add(new Film(f.getOriginal_title(), f.getPoster_path()));
             }
         }

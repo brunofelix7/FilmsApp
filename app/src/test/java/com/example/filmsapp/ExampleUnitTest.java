@@ -1,17 +1,20 @@
 package com.example.filmsapp;
 
+import com.example.filmsapp.api.ApiService;
+import com.example.filmsapp.api.response.FilmResult;
+
 import org.junit.Test;
+
+import java.io.IOException;
 
 import static org.junit.Assert.*;
 
-/**
- * Example local unit test, which will execute on the development machine (host).
- *
- * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
- */
 public class ExampleUnitTest {
+
     @Test
-    public void addition_isCorrect() {
-        assertEquals(4, 2 + 2);
+    public void apiTest() throws IOException {
+        FilmResult response = ApiService.getInstance().list("0869c06b9999f9f3106978f6ef084181").execute().body();
+        assertNotNull(response);
+        System.out.println("Test OK");
     }
 }

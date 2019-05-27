@@ -11,7 +11,8 @@ import android.widget.Toast;
 import com.example.filmsapp.R;
 import com.example.filmsapp.adapter.FilmAdapter;
 import com.example.filmsapp.domain.Film;
-import com.example.filmsapp.listener.ItemFilmClickListener;
+import com.example.filmsapp.listener.ItemClickListener;
+import com.example.filmsapp.ui.filmdetails.FilmDetailsActivity;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EActivity;
@@ -19,8 +20,9 @@ import org.androidannotations.annotations.ViewById;
 
 import java.util.List;
 
+@SuppressLint("Registered")
 @EActivity(R.layout.activity_film)
-public class FilmActivity extends AppCompatActivity implements FilmContract.FilmView, ItemFilmClickListener {
+public class FilmActivity extends AppCompatActivity implements FilmContract.FilmView, ItemClickListener<Film> {
 
     @ViewById
     protected Toolbar toolbar;
@@ -66,7 +68,7 @@ public class FilmActivity extends AppCompatActivity implements FilmContract.Film
     }
 
     @Override
-    public void onItemFilmClick(Film film) {
+    public void onItemClick(Film film) {
         Intent intent = new Intent(this, FilmDetailsActivity.class);
         intent.putExtra(FilmDetailsActivity.KEY_EXTRA_FILM, film);
         startActivity(intent);

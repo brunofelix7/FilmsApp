@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.example.filmsapp.R;
 import com.example.filmsapp.domain.Film;
-import com.example.filmsapp.listener.ItemFilmClickListener;
+import com.example.filmsapp.listener.ItemClickListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -19,9 +19,9 @@ import java.util.List;
 public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.FilmViewHolder> {
 
     private List<Film> films;
-    private static ItemFilmClickListener listener;
+    private static ItemClickListener listener;
 
-    public FilmAdapter(ItemFilmClickListener listener) {
+    public FilmAdapter(ItemClickListener listener) {
         this.films = new ArrayList<>();
         FilmAdapter.listener = listener;
     }
@@ -63,7 +63,7 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.FilmViewHolder
             iv_path = itemView.findViewById(R.id.iv_path);
             itemView.setOnClickListener(v -> {
                 if(listener != null){
-                    listener.onItemFilmClick(film);
+                    listener.onItemClick(film);
                 }
             });
         }

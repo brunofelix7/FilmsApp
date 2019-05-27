@@ -1,4 +1,4 @@
-package com.example.filmsapp.ui.film;
+package com.example.filmsapp.ui.filmdetails;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
