@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.filmsapp.R;
@@ -28,7 +29,10 @@ public class FilmActivity extends AppCompatActivity implements FilmContract.Film
     protected Toolbar toolbar;
 
     @ViewById
-    protected RecyclerView rv_films;
+    public RecyclerView rv_films;
+
+    @ViewById
+    public ProgressBar progressBar;
 
     protected FilmAdapter adapter;
     protected FilmContract.FilmPresenter presenter;
@@ -52,7 +56,7 @@ public class FilmActivity extends AppCompatActivity implements FilmContract.Film
     }
 
     protected void presenterConfig() {
-        presenter = new FilmPresenter(this);
+        presenter = new FilmPresenter(this,this);
         presenter.listFilms();
     }
 

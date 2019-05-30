@@ -1,40 +1,24 @@
 package com.example.filmsapp.ui.film;
 
-import com.example.filmsapp.api.ApiService;
 import com.example.filmsapp.api.response.FilmResult;
 import com.example.filmsapp.mapper.FilmMapper;
+import com.example.filmsapp.task.TaskFilm;
+import com.example.filmsapp.task.TaskFilmContract;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+public class FilmPresenter implements FilmContract.FilmPresenter, TaskFilmContract {
 
-public class FilmPresenter implements FilmContract.FilmPresenter {
-
+    private FilmActivity mActivity;
     private FilmContract.FilmView view;
     private static final String API_KEY = "0869c06b9999f9f3106978f6ef084181";
 
-    FilmPresenter(FilmContract.FilmView view) {
+    FilmPresenter(FilmActivity mActivity, FilmContract.FilmView view) {
         this.view = view;
+        this.mActivity = mActivity;
     }
 
     @Override
     public void listFilms() {
-        ApiService.getInstance().list(API_KEY).enqueue(new Callback<FilmResult>() {
-            @Override
-            public void onResponse(Call<FilmResult> call, Response<FilmResult> response) {
-                if (response.isSuccessful()) {
-                    view.showFilms(FilmMapper.responseFromDomain(response.body().getResults()));
-                } else {
-                    //  Aqui você pode obter o erro e mostrar uma mensagem personalizada de acordo com o código de erro
-                    view.showError();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<FilmResult> call, Throwable t) {
-                view.showError();
-            }
-        });
+        new TaskFilm(this.mActivity, this).execute(API_KEY);
     }
 
     @Override
@@ -42,4 +26,13 @@ public class FilmPresenter implements FilmContract.FilmPresenter {
         this.view = null;
     }
 
+    @Override
+    public void updateUI(FilmResult films) {
+        if (films != null) {
+            view.showFilms(FilmMapper.responseFromDomain(films.getResults()));
+        } else {
+            //  Aqui você pode obter o erro e mostrar uma mensagem personalizada de acordo com o código de erro
+            view.showError();
+        }
+    }
 }
