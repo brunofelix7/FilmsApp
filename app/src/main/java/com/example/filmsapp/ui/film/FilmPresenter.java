@@ -1,6 +1,6 @@
 package com.example.filmsapp.ui.film;
 
-import com.example.filmsapp.api.response.FilmResult;
+import com.example.filmsapp.model.dto.FilmResult;
 import com.example.filmsapp.mapper.FilmMapper;
 import com.example.filmsapp.task.TaskFilm;
 import com.example.filmsapp.task.TaskFilmContract;

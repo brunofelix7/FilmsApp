@@ -1,8 +1,7 @@
 package com.example.filmsapp.api;
 
-import com.example.filmsapp.api.response.FilmResult;
+import com.example.filmsapp.model.dto.FilmResult;
 
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;

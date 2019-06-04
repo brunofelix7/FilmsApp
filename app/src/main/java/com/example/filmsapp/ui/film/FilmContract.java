@@ -1,6 +1,6 @@
 package com.example.filmsapp.ui.film;
 
-import com.example.filmsapp.domain.Film;
+import com.example.filmsapp.model.domain.Film;
 
 import java.util.List;
 

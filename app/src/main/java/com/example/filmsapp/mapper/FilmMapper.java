@@ -2,8 +2,8 @@ package com.example.filmsapp.mapper;
 
 import android.os.Build;
 
-import com.example.filmsapp.api.response.FilmResponse;
-import com.example.filmsapp.domain.Film;
+import com.example.filmsapp.model.dto.FilmDto;
+import com.example.filmsapp.model.domain.Film;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,12 +13,12 @@ import java.util.List;
  */
 public class FilmMapper {
 
-    public static List<Film> responseFromDomain(List<FilmResponse> filmsResponse) {
+    public static List<Film> responseFromDomain(List<FilmDto> filmsResponse) {
         final List<Film> films = new ArrayList<>();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             filmsResponse.forEach(f -> films.add(new Film(f.getOriginal_title(), f.getPoster_path())));
         } else {
-            for (FilmResponse f : filmsResponse) {
+            for (FilmDto f : filmsResponse) {
                 films.add(new Film(f.getOriginal_title(), f.getPoster_path()));
             }
         }

@@ -4,7 +4,10 @@ import android.os.AsyncTask;
 import android.view.View;
 
 import com.example.filmsapp.api.ApiService;
-import com.example.filmsapp.api.response.FilmResult;
+import com.example.filmsapp.database.service.FilmService;
+import com.example.filmsapp.model.domain.Film;
+import com.example.filmsapp.model.dto.FilmDto;
+import com.example.filmsapp.model.dto.FilmResult;
 import com.example.filmsapp.ui.film.FilmActivity;
 
 import java.io.IOException;

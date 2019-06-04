@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.filmsapp.R;
-import com.example.filmsapp.domain.Film;
+import com.example.filmsapp.model.domain.Film;
 
 public class FilmDetailsActivity extends AppCompatActivity {
 

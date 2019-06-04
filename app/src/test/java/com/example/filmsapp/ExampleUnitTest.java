@@ -1,7 +1,7 @@
 package com.example.filmsapp;
 
 import com.example.filmsapp.api.ApiService;
-import com.example.filmsapp.api.response.FilmResult;
+import com.example.filmsapp.model.dto.FilmResult;
 
 import org.junit.Test;
 
