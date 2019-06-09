@@ -21,4 +21,8 @@ public class FilmDetailsActivity extends AppCompatActivity {
         tv_title.setText(film.getTitle());
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 }
